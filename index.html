@@ -3,87 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Простой шаблон страницы</title>
+    <title>Sunshainy</title>
     <style>
-        /* CSS стили */
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
-            padding: 20px;
-            background-color: #f4f4f9;
-            color: #333;
-            line-height: 1.6;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        header {
-            background-color: #4a90e2;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            border-radius: 8px 8px 0 0;
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Arial, sans-serif;
         }
 
-        main {
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        /* From Uiverse.io by lukepadiachy */ 
+        .my-loader {
+            width: 200px;
+            height: 200px;
+            perspective: 1000px;
+            margin: auto;
         }
 
-        h1, h2 {
-            color: #4a90e2;
+        .rubiks-cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: my-rotateCube 5s infinite linear;
         }
 
-        button {
-            padding: 10px 20px;
-            background-color: #4a90e2;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
+        .my-loader .face {
+            position: absolute;
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            height: 100%;
         }
 
-        button:hover {
-            background-color: #357abd;
+        .my-loader .face.front {
+            transform: translateZ(100px);
+        }
+        .my-loader .face.back {
+            transform: rotateY(180deg) translateZ(100px);
+        }
+        .my-loader .face.left {
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        .my-loader .face.right {
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        .my-loader .face.top {
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        .my-loader .face.bottom {
+            transform: rotateX(-90deg) translateZ(100px);
         }
 
-        #output {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #eef5ff;
-            border-radius: 5px;
-            display: none;
+        .my-loader .cube {
+            width: calc(100% / 3);
+            height: calc(100% / 3);
+            box-sizing: border-box;
+            border: 1px solid #000;
+        }
+
+        @keyframes my-rotateCube {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            100% {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Добро пожаловать на простую страницу</h1>
-    </header>
+    <!-- From Uiverse.io by lukepadiachy --> 
+    <div class="my-loader">
+        <div class="rubiks-cube">
+            <div class="face front">
+                <div style="background: #ff3d00;" class="cube"></div>
+                <div style="background: #ffeb3b;" class="cube"></div>
+                <div style="background: #4caf50;" class="cube"></div>
+                <div style="background: #2196f3;" class="cube"></div>
+                <div style="background: #ffffff;" class="cube"></div>
+                <div style="background: #ffeb3b;" class="cube"></div>
+                <div style="background: #4caf50;" class="cube"></div>
+                <div style="background: #2196f3;" class="cube"></div>
+                <div style="background: #ff3d00;" class="cube"></div>
+            </div>
 
-    <main>
-        <h2>Пример интерактивности</h2>
-        <p>Эта страница демонстрирует базовую структуру HTML, стили CSS и простой JavaScript.</p>
-        
-        <button id="myButton">Нажмите меня</button>
-        
-        <div id="output">
-            <p>Кнопка была нажата! Текущее время: <span id="time"></span></p>
+            <div class="face back">
+                <div style="background: #4caf50;" class="cube"></div>
+                <div style="background: #ff3d00;" class="cube"></div>
+                <div style="background: #ffeb3b;" class="cube"></div>
+                <div style="background: #2196f3;" class="cube"></div>
+                <div style="background: #ffffff;" class="cube"></div>
+                <div style="background: #ff3d00;" class="cube"></div>
+                <div style="background: #ffeb3b;" class="cube"></div>
+                <div style="background: #4caf50;" class="cube"></div>
+                <div style="background: #2196f3;" class="cube"></div>
+            </div>
+            <div class="face left">
+                <div style="background: #ffeb3b;" class="cube"></div>
+                <div style="background: #4caf50;" class="cube"></div>
+                <div style="background: #2196f3;" class="cube"></div>
+                <div style="background: #ff3d00;" class="cube"></div>
+                <div style="background: #ffffff;" class="cube"></div>
+                <div style="background: #4caf50;" class="cube"></div>
+                <div style="background: #2196f3;" class="cube"></div>
+                <div style="background: #ffeb3b;" class="cube"></div>
+                <div style="background: #ff3d00;" class="cube"></div>
+            </div>
+            <div class="face right">
+                <div style="background: #4caf50;" class="cube"></div>
+                <div style="background: #ff3d00;" class="cube"></div>
+                <div style="background: #ffeb3b;" class="cube"></div>
+                <div style="background: #2196f3;" class="cube"></div>
+                <div style="background: #ffffff;" class="cube"></div>
+                <div style="background: #ff3d00;" class="cube"></div>
+                <div style="background: #ffeb3b;" class="cube"></div>
+                <div style="background: #4caf50;" class="cube"></div>
+                <div style="background: #2196f3;" class="cube"></div>
+            </div>
+            <div class="face top">
+                <div style="background: #2196f3;" class="cube"></div>
+                <div style="background: #ffeb3b;" class="cube"></div>
+                <div style="background: #ff3d00;" class="cube"></div>
+                <div style="background: #4caf50;" class="cube"></div>
+                <div style="background: #ffffff;" class="cube"></div>
+                <div style="background: #ffeb3b;" class="cube"></div>
+                <div style="background: #ff3d00;" class="cube"></div>
+                <div style="background: #4caf50;" class="cube"></div>
+                <div style="background: #2196f3;" class="cube"></div>
+            </div>
+            <div class="face bottom">
+                <div style="background: #ffffff;" class="cube"></div>
+                <div style="background: #4caf50;" class="cube"></div>
+                <div style="background: #2196f3;" class="cube"></div>
+                <div style="background: #ff3d00;" class="cube"></div>
+                <div style="background: #ffeb3b;" class="cube"></div>
+                <div style="background: #4caf50;" class="cube"></div>
+                <div style="background: #2196f3;" class="cube"></div>
+                <div style="background: #ffffff;" class="cube"></div>
+                <div style="background: #ff3d00;" class="cube"></div>
+            </div>
         </div>
-    </main>
-
-    <script>
-        // JavaScript код
-        document.getElementById('myButton').addEventListener('click', function() {
-            const output = document.getElementById('output');
-            const timeSpan = document.getElementById('time');
-            
-            output.style.display = 'block';
-            timeSpan.textContent = new Date().toLocaleTimeString();
-        });
-    </script>
+    </div>
 </body>
 </html>
