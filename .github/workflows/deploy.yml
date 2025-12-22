@@ -24,11 +24,20 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Inspect build output
+        run: |
+          echo "Build folder size and sample listing:"
+          du -sh build || true
+          echo "Checking for symlinks inside build (if any):"
+          find build -type l -print || true
+          echo "Top-level files count:"
+          ls -la build | wc -l || true
       - name: Upload Pages artifact
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
           path: build
+          if-no-files-found: error
 
   deploy:
     runs-on: ubuntu-latest
