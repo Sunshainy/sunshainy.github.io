@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -69,11 +69,26 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Deploy to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./artifact_build
-          publish_branch: gh-pages
-          user_name: github-actions[bot]
-          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+      - name: Deploy to gh-pages (manual git push)
+        env:
+          REPO: ${{ github.repository }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SHA: ${{ github.sha }}
+        run: |
+          set -e
+          echo "Preparing gh-pages branch content from artifact_build"
+          cd $GITHUB_WORKSPACE
+          git --version
+          # create a temporary directory for the deployment
+          tmpdir=$(mktemp -d)
+          echo "Copying artifact_build to $tmpdir"
+          cp -a artifact_build/. "$tmpdir/"
+          cd "$tmpdir"
+          echo "Initializing git repo in temp dir"
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Deploy gh-pages: $SHA" || echo "No changes to commit"
+          echo "Pushing to gh-pages branch"
+          git push --force "https://x-access-token:${TOKEN}@github.com/${REPO}.git" master:gh-pages
