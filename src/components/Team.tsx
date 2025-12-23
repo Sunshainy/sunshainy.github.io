@@ -1,9 +1,9 @@
 import { Mail } from 'lucide-react';
-import nikitinImage from '../assets/06052b0428ea82982eaeb83a548bb9572f55f1df.png';
-import kolosovaImage from '../../assets/kolosova.jpeg';
-import ivanovaImage from '../../assets/ivanova.jpeg';
-import lukovenkovImage from '../../assets/lukovenkov.jpeg';
-import kozyrevaImage from '../../assets/kozyreva.jpeg';
+import nikitinImage from '@/assets/06052b0428ea82982eaeb83a548bb9572f55f1df.png';
+import kolosovaImage from '@/assets/kolosova.jpeg';
+import ivanovaImage from '@/assets/ivanova.jpeg';
+import lukovenkovImage from '@/assets/lukovenkov.jpeg';
+import kozyrevaImage from '@/assets/kozyreva.jpeg';
 
 export function Team() {
   const teamMembers = [
