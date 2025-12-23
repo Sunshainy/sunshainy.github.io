@@ -1,4 +1,4 @@
-name: Build and publish to GitHub Pages (via gh-pages branch)
+name: Build and publish to GitHub Pages
 
 on:
   push:
@@ -21,11 +21,12 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Deploy to gh-pages
+      - name: Deploy to main branch  # Изменено
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
-          publish_branch: gh-pages
+          publish_branch: main  # Деплой в main
+          force_orphan: true    # Рекомендуется: очищает ветку перед публикацией
           user_name: github-actions[bot]
           user_email: 41898282+github-actions[bot]@users.noreply.github.com
