@@ -32,11 +32,28 @@ jobs:
           find build -type l -print || true
           echo "Top-level files count:"
           ls -la build | wc -l || true
+      - name: Prepare Pages artifact (dereference symlinks)
+        run: |
+          echo "Creating sanitized artifact directory artifact_build..."
+          rm -rf artifact_build || true
+          mkdir artifact_build
+          echo "Copying build contents and dereferencing symlinks (cp -rL)"
+          cp -rL build/* artifact_build/ || true
+          echo "Sanitized folder size:"
+          du -sh artifact_build || true
+          # fail early if artifact too large (>10GB)
+          size_kb=$(du -s artifact_build | awk '{print $1}') || true
+          limit_kb=$((10 * 1024 * 1024))
+          echo "artifact size (KB): $size_kb; limit (KB): $limit_kb"
+          if [ "$size_kb" -gt "$limit_kb" ]; then
+            echo "Artifact too large for Pages (>$((10)) GB). Aborting."
+            exit 1
+          fi
       - name: Upload Pages artifact
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: build
+          path: artifact_build
           if-no-files-found: error
 
   deploy:
