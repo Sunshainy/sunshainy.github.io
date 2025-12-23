@@ -21,9 +21,6 @@ export function Footer() {
               <a href="#about" className="block text-[var(--color-text-secondary)] hover:text-[var(--color-accent-red)] transition-colors">
                 О проекте
               </a>
-              <a href="#goals" className="block text-[var(--color-text-secondary)] hover:text-[var(--color-accent-red)] transition-colors">
-                Цели и задачи
-              </a>
               <a href="#team" className="block text-[var(--color-text-secondary)] hover:text-[var(--color-accent-red)] transition-colors">
                 Команда
               </a>
