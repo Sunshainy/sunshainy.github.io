@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages (build -> upload artifact -> deploy)
+name: Deploy to GitHub Pages (build -> upload -> deploy)
 
 on:
   push:
@@ -10,10 +10,8 @@ permissions:
   id-token: write
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    outputs:
-      artifact-path: build
     steps:
       - uses: actions/checkout@v4
       - name: Setup Node
@@ -24,71 +22,9 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Inspect build output
-        run: |
-          echo "Build folder size and sample listing:"
-          du -sh build || true
-          echo "Checking for symlinks inside build (if any):"
-          find build -type l -print || true
-          echo "Top-level files count:"
-          ls -la build | wc -l || true
-      - name: Prepare Pages artifact (dereference symlinks)
-        run: |
-          echo "Creating sanitized artifact directory artifact_build..."
-          rm -rf artifact_build || true
-          mkdir artifact_build
-          echo "Copying build contents and dereferencing symlinks (cp -aL build/. artifact_build/)"
-          cp -aL build/. artifact_build/ || true
-          echo "Sanitized folder size:"
-          du -sh artifact_build || true
-          echo "Checking for any remaining symlinks in artifact_build:"
-          find artifact_build -type l -print || true
-          # fail early if artifact too large (>10GB)
-          size_kb=$(du -s artifact_build | awk '{print $1}') || true
-          limit_kb=$((10 * 1024 * 1024))
-          echo "artifact size (KB): $size_kb; limit (KB): $limit_kb"
-          if [ "$size_kb" -gt "$limit_kb" ]; then
-            echo "Artifact too large for Pages (>$((10)) GB). Aborting."
-            exit 1
-          fi
-          # ensure no symlinks remain after dereference
-          if [ -n "$(find artifact_build -type l -print -quit)" ]; then
-            echo "Symlinks remain in artifact_build after dereference — aborting deployment."
-            exit 1
-          fi
-          echo "Top 20 largest files in artifact_build (for debugging):"
-          du -ah artifact_build | sort -hr | head -n 20 || true
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: artifact_build
-
-  publish:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Deploy to gh-pages (manual git push)
-        env:
-          REPO: ${{ github.repository }}
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SHA: ${{ github.sha }}
-        run: |
-          set -e
-          echo "Preparing gh-pages branch content from artifact_build"
-          cd $GITHUB_WORKSPACE
-          git --version
-          # create a temporary directory for the deployment
-          tmpdir=$(mktemp -d)
-          echo "Copying artifact_build to $tmpdir"
-          cp -a artifact_build/. "$tmpdir/"
-          cd "$tmpdir"
-          echo "Initializing git repo in temp dir"
-          git init
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "Deploy gh-pages: $SHA" || echo "No changes to commit"
-          echo "Pushing to gh-pages branch"
-          git push --force "https://x-access-token:${TOKEN}@github.com/${REPO}.git" master:gh-pages
+          path: build
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
