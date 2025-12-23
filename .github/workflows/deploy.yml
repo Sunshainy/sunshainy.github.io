@@ -37,10 +37,12 @@ jobs:
           echo "Creating sanitized artifact directory artifact_build..."
           rm -rf artifact_build || true
           mkdir artifact_build
-          echo "Copying build contents and dereferencing symlinks (cp -rL)"
-          cp -rL build/* artifact_build/ || true
+          echo "Copying build contents and dereferencing symlinks (cp -aL build/. artifact_build/)"
+          cp -aL build/. artifact_build/ || true
           echo "Sanitized folder size:"
           du -sh artifact_build || true
+          echo "Checking for any remaining symlinks in artifact_build:"
+          find artifact_build -type l -print || true
           # fail early if artifact too large (>10GB)
           size_kb=$(du -s artifact_build | awk '{print $1}') || true
           limit_kb=$((10 * 1024 * 1024))
@@ -49,6 +51,13 @@ jobs:
             echo "Artifact too large for Pages (>$((10)) GB). Aborting."
             exit 1
           fi
+          # ensure no symlinks remain after dereference
+          if [ -n "$(find artifact_build -type l -print -quit)" ]; then
+            echo "Symlinks remain in artifact_build after dereference — aborting deployment."
+            exit 1
+          fi
+          echo "Top 20 largest files in artifact_build (for debugging):"
+          du -ah artifact_build | sort -hr | head -n 20 || true
       - name: Upload Pages artifact
         uses: actions/upload-artifact@v4
         with:
