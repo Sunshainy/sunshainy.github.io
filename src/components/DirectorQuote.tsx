@@ -7,7 +7,7 @@ export function DirectorQuote() {
         </span>
         <div className="mt-8 flex justify-center">
           <div className="inline-block border-2 border-[var(--color-accent-red)] px-6 py-4">
-            <blockquote className="text-3xl md:text-4xl leading-relaxed text-white italic max-w-3xl">
+            <blockquote className="text-3xl md:text-4xl leading-relaxed text-white max-w-3xl">
               Днём, в большинстве своем мы врачи, но только солнце клонится к закату мы превращаемся в теней. Кто-то скажет «биполярка», мы же верим, что это талант.
             </blockquote>
           </div>

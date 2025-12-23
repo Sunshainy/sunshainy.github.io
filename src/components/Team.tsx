@@ -1,9 +1,9 @@
 import { Mail } from 'lucide-react';
-import nikitinImage from 'figma:asset/06052b0428ea82982eaeb83a548bb9572f55f1df.png';
-import kolosovaImage from 'figma:asset/9a049c119af7211cda0fd1f347ef117aec65e3d2.png';
-import ivanovaImage from 'figma:asset/edfc16f0d419f966ae5cbeff657b2f3bb104df1c.png';
-import lukovenkovImage from 'figma:asset/1630a9b5ac10bd46e9f8cdace247041363b87033.png';
-import kozyrevaImage from 'figma:asset/19aa236dbff659d534706c7ced475fce5f587247.png';
+import nikitinImage from '../assets/06052b0428ea82982eaeb83a548bb9572f55f1df.png';
+import kolosovaImage from '../../assets/kolosova.jpeg';
+import ivanovaImage from '../../assets/ivanova.jpeg';
+import lukovenkovImage from '../../assets/lukovenkov.jpeg';
+import kozyrevaImage from '../../assets/kozyreva.jpeg';
 
 export function Team() {
   const teamMembers = [
