@@ -1,5 +1,5 @@
 import { ChevronDown } from 'lucide-react';
-import heroImage from 'figma:asset/3294fb07663ece7e52098a529ade2d37bb4b8dbf.png';
+import heroImage from '../assets/3294fb07663ece7e52098a529ade2d37bb4b8dbf.png';
 
 export function Hero() {
   const scrollToSection = (id: string) => {

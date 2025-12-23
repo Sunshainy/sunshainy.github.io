@@ -1,6 +1,6 @@
 import { Calendar, MapPin, Clock, Sparkles } from 'lucide-react';
-import dekabristyImage from 'figma:asset/e163fca83c5d55b3f091f9a75b3e6cc02aac3a33.png';
-import mittelshpilImage from 'figma:asset/e724464b9e54bc5e946f2b15e8ae483708284c00.png';
+import dekabristyImage from '../assets/e163fca83c5d55b3f091f9a75b3e6cc02aac3a33.png';
+import mittelshpilImage from '../assets/e724464b9e54bc5e946f2b15e8ae483708284c00.png';
 import prologImage from '../assets/3afisha.png';
 
 

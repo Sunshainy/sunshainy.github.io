@@ -1,5 +1,5 @@
 import { Building2 } from 'lucide-react';
-import museumLogo from 'figma:asset/b7ada36d99a6f4799e0a5ebedeb3e6d567b10c7f.png';
+import museumLogo from '../assets/b7ada36d99a6f4799e0a5ebedeb3e6d567b10c7f.png';
 
 export function Partners() {
   const partners = [
