@@ -59,11 +59,9 @@ jobs:
           echo "Top 20 largest files in artifact_build (for debugging):"
           du -ah artifact_build | sort -hr | head -n 20 || true
       - name: Upload Pages artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v1
         with:
-          name: github-pages
           path: artifact_build
-          if-no-files-found: error
 
   deploy:
     runs-on: ubuntu-latest
