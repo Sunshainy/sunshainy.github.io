@@ -71,6 +71,7 @@ export function Team() {
                     src={member.image} 
                     alt={member.name} 
                     className="w-full h-full object-cover"
+                    style={{ objectPosition: 'center 30%' }}
                   />
                 ) : (
                   <div className="w-32 h-32 rounded-full border-4 border-[var(--color-accent-red)] bg-[var(--color-bg-card)] flex items-center justify-center">
