@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react-swc';
 import path from 'path';
 
 export default defineConfig({
-  base: '/',                  // Правильно для user site (sunshainy.github.io)
+  base: '/',
   plugins: [react()],
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
@@ -51,7 +51,9 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
-    outDir: 'build',          // Соответствует workflow (path: ./build)
+    outDir: 'build',
+    assetsDir: 'assets',
+    sourcemap: false,
   },
   server: {
     port: 3000,
