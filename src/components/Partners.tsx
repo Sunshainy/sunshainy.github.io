@@ -5,7 +5,7 @@ export function Partners() {
   const partners = [
     {
       name: 'Свердловский областной краеведческий музей им. Клера',
-      description: 'Партнёрство в области исторических исследований и проведения мероприятий на базе музея',
+      description: 'Партнёрство в области исторических исследований и проведение мероприятий на базе музея',
       logo: museumLogo
     }
   ];
@@ -21,7 +21,7 @@ export function Partners() {
             Наши партнёры
           </h2>
           <p className="text-xl text-[var(--color-text-secondary)] max-w-2xl mx-auto">
-            Мы очень ждем новых партнеров и вместе оживлять историю России!
+            Мы очень ждем новых партнёров, чтобы вместе оживлять историю России!
           </p>
         </div>
 
@@ -55,7 +55,7 @@ export function Partners() {
             учреждениями и другими культурными организациями
           </p>
           <a 
-            href="https://web.telegram.org/k/#@semyon360"
+            href="https://t.me/semyon360"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-8 py-4 bg-[var(--color-accent-red)] text-[var(--color-bg-darker)] hover:bg-[var(--color-text-primary)] transition-all duration-300"

@@ -97,7 +97,7 @@ export function Team() {
             Хотите присоединиться к нашей команде?
           </p>
           <a 
-            href="https://web.telegram.org/k/#@semyon360"
+            href="https://t.me/semyon360"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 bg-[var(--color-accent-red)] text-[var(--color-bg-darker)] hover:bg-[var(--color-text-primary)] transition-all duration-300"

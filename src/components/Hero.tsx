@@ -50,10 +50,10 @@ export function Hero() {
             Спектакли
           </button>
           <button 
-            onClick={() => scrollToSection('contact')}
+            onClick={() => scrollToSection('team')}
             className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300"
           >
-            Связаться
+            Связаться с нами
           </button>
         </div>
       </div>
