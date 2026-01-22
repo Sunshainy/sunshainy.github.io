@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Clean build directory
+        run: rm -rf ./build
+
       - name: Build
         run: npm run build
 
@@ -38,8 +41,16 @@ jobs:
 
       - name: Verify build output
         run: |
+          echo "=== Build directory structure ==="
           ls -la ./build/
+          echo "=== Assets directory ==="
           ls -la ./build/assets/ || true
+          echo "=== Checking index.html ==="
+          cat ./build/index.html || true
+          echo "=== Checking JS files ==="
+          find ./build/assets -name "*.js" -type f | head -5 || true
+          echo "=== File types ==="
+          file ./build/assets/*.js 2>/dev/null | head -5 || true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
