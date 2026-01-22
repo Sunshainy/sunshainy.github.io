@@ -39,19 +39,19 @@ export function Hero() {
         <div className="flex flex-wrap gap-4 justify-center">
           <button 
             onClick={() => scrollToSection('about')}
-            className="px-8 py-4 bg-[var(--color-accent-red)] text-black hover:bg-[var(--color-text-primary)] hover:text-black transition-all duration-300"
+            className="px-8 py-4 bg-[var(--color-accent-red)] text-black hover:bg-[var(--color-text-primary)] hover:text-black transition-all duration-300 w-full sm:w-[200px]"
           >
             О проекте
           </button>
           <button 
             onClick={() => scrollToSection('productions')}
-            className="px-8 py-4 border-2 border-[var(--color-accent-red)] text-[var(--color-accent-red)] hover:bg-[var(--color-text-primary)] hover:text-black transition-all duration-300"
+            className="px-8 py-4 border-2 border-[var(--color-accent-red)] text-[var(--color-accent-red)] hover:bg-[var(--color-text-primary)] hover:text-black transition-all duration-300 w-full sm:w-[200px]"
           >
             Спектакли
           </button>
           <button 
             onClick={() => scrollToSection('team')}
-            className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300"
+            className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300 w-full sm:w-[200px]"
           >
             Связаться с нами
           </button>

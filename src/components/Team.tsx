@@ -1,7 +1,7 @@
 import { Mail } from 'lucide-react';
 import nikitinImage from '@/assets/06052b0428ea82982eaeb83a548bb9572f55f1df.png';
 import kolosovaImage from '@/assets/kolosova.jpeg';
-import ivanovaImage from '@/assets/ivanova.jpeg';
+import ivanovaImage from '@/assets/ivanova.jpg';
 import lukovenkovImage from '@/assets/lukovenkov.jpeg';
 import kozyrevaImage from '@/assets/kozyreva.jpeg';
 
@@ -97,7 +97,7 @@ export function Team() {
             Хотите присоединиться к нашей команде?
           </p>
           <a 
-            href="https://t.me/semyon360"
+            href="https://t.me/Polanjaa"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 bg-[var(--color-accent-red)] text-[var(--color-bg-darker)] hover:bg-[var(--color-text-primary)] transition-all duration-300"

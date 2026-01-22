@@ -21,7 +21,7 @@ html {
 }
 
 body {
-  font-family: 'Futura PT Medium', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Futura PT', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--color-bg-dark);
   color: var(--color-text-primary);
   margin: 0;
@@ -29,14 +29,16 @@ body {
   line-height: 1.6;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'BERNIER Regular', Georgia, serif;
+}
+
+h1 {
   letter-spacing: 0.05em;
   line-height: 1.2;
 }
 
 h2 {
-  font-family: 'BERNIER Regular', Georgia, serif;
   letter-spacing: 0.03em;
   line-height: 1.3;
 }
@@ -46,7 +48,7 @@ h3 {
 }
 
 p {
-  font-family: 'Futura PT Medium', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Futura PT', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.7;
 }
 
