@@ -1,5 +1,46 @@
 @import "tailwindcss";
 
+/* Futura PT Font Faces */
+@font-face {
+  font-family: 'Futura PT';
+  src: url('/FuturaPT-Book.woff2') format('woff2'),
+       url('/FuturaPT-Book.woff') format('woff'),
+       url('/FuturaPT-Book.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Futura PT';
+  src: url('/FuturaPT-Medium.woff2') format('woff2'),
+       url('/FuturaPT-Medium.woff') format('woff'),
+       url('/FuturaPT-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Futura PT';
+  src: url('/FuturaPT-Demi.woff2') format('woff2'),
+       url('/FuturaPT-Demi.woff') format('woff'),
+       url('/FuturaPT-Demi.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Futura PT';
+  src: url('/FuturaPT-Bold.woff2') format('woff2'),
+       url('/FuturaPT-Bold.woff') format('woff'),
+       url('/FuturaPT-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --color-bg-dark: #0a0a0a;
   --color-bg-darker: #000000;
