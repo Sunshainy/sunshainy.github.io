@@ -54,6 +54,11 @@ export default defineConfig({
     outDir: 'build',
     assetsDir: 'assets',
     sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
   },
   server: {
     port: 3000,

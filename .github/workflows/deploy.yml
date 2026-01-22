@@ -36,6 +36,11 @@ jobs:
       - name: Add .nojekyll file
         run: touch ./build/.nojekyll
 
+      - name: Verify build output
+        run: |
+          ls -la ./build/
+          ls -la ./build/assets/ || true
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
